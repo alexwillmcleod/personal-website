@@ -1,5 +1,5 @@
 interface Props {
-  endpoing: string;
+  endpoint: string;
   query?: Record<string, string>;
   wrappedByKey?: string;
   wrappedByList?: boolean;

@@ -3,6 +3,14 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import fetchApi from '../lib/strapi';
+import type Article from '../interfaces/article';
+
+const articles = await fetchApi<Article[]>({
+  endpoint: 'articles',
+  wrappedByKey: 'data'
+});
+console.log(articles);
 ---
 
 <!doctype html>
