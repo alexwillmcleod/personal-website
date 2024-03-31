@@ -14,8 +14,8 @@ export async function GET(context) {
     site: context.site,
     items: articles.map((article) => ({
       ...article.attributes,
-      title: article.attributes.title,
-      description: article.attributes.description,
+      title: article.attributes.title || '',
+      description: article.attributes.description || '',
       pubDate: new Date(article.attributes.publishedAt),
       link: `/blog/${article.attributes.slug}/`,
     })),
