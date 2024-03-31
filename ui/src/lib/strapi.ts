@@ -22,6 +22,7 @@ export default async function fetchApi<T>({
   if (endpoint.startsWith('/')) {
     endpoint = endpoint.slice(1);
   }
+  console.log(import.meta.env.STRAPI_URL);
 
   const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`);
 
@@ -32,6 +33,7 @@ export default async function fetchApi<T>({
   }
   const res = await fetch(url.toString());
   let data = await res.json();
+  console.log(`data = ${JSON.stringify(data)}`)
 
   if (wrappedByKey) {
     data = data[wrappedByKey];

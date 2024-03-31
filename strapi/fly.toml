@@ -7,11 +7,6 @@ app = 'portfolio-strapi'
 primary_region = 'syd'
 
 [build]
-
-[[mounts]]
-  source = 'data'
-  destination = '/data'
-
 [http_service]
   internal_port = 1337
   force_https = true
