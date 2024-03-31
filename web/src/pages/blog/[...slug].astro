@@ -32,6 +32,7 @@ console.log(article);
   <body>
     <main>
       <!-- <img src={import.meta.env.STRAPI_URL + article.attributes.image.data.attributes.url} /> -->
+      <img src={article.attributes.image} />
       <h1>{article.attributes.title}</h1>
       <!-- Render markdown -->
       <Markdown of={article.attributes.content} />
