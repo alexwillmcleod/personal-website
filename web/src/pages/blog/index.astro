@@ -6,6 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import FormattedDate from '../../components/FormattedDate.astro';
 import fetchApi from '../../lib/strapi';
 import type Article from '../../interfaces/article';
+import { Image } from 'astro:assets';
 
 const articles = (await fetchApi<Article[]>({
     endpoint: 'articles',
@@ -27,9 +28,10 @@ const articles = (await fetchApi<Article[]>({
 				<ul>
 					{
 						articles.map((article: Article) => (
+
 							<li>
 								<a href={`/blog/${article.attributes.slug}/`}>
-                {article.attributes.image && <img width={720} height={360} src={article.attributes.image} alt="" />}
+                {article.attributes.image?.data.attributes.url && <Image width={720} height={360} src={article.attributes.image?.data.attributes.url} alt="" />}
 									<h4 class="title">{article.attributes.title}</h4>
 									<p class="date">
 										<FormattedDate date={new Date(article.attributes.publishedAt)} />
