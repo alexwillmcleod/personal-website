@@ -1,8 +1,10 @@
 ---
+import Picture from 'astro/components/Picture.astro';
 import type Article from '../../interfaces/article';
 import fetchApi from '../../lib/strapi';
 import { Markdown } from '@astropub/md';
 import { Image, getImage } from 'astro:assets';
+import BaseHead from '../../components/BaseHead.astro';
 
 export async function getStaticPaths() {
   const articles: Article[] = await fetchApi<Article[]>({
@@ -28,6 +30,7 @@ const coverImageURL: string | undefined = article.attributes.image?.data.attribu
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <BaseHead />
     <title>{article.attributes.title}</title>
   </head>
 
@@ -35,8 +38,9 @@ const coverImageURL: string | undefined = article.attributes.image?.data.attribu
     <main>
       <!-- <img src={import.meta.env.STRAPI_URL + article.attributes.image.data.attributes.url} /> -->
      
-      {coverImageURL && <Image width={720} height={360} src={coverImageURL} alt={article.attributes.title}/>}
+      {coverImageURL && <Picture width={1080} inferSize decoding="async" class="max-w-[720px]" src={coverImageURL} alt={article.attributes.title}/>}
       <h1>{article.attributes.title}</h1>
+      <h3>{new Date(article.attributes.publishedAt).toDateString()}</h3>
       <!-- Render markdown -->
       <Markdown of={article.attributes.content} />
     </main>

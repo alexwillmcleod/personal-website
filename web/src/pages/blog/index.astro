@@ -7,6 +7,7 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import fetchApi from '../../lib/strapi';
 import type Article from '../../interfaces/article';
 import { Image } from 'astro:assets';
+import Picture from 'astro/components/Picture.astro';
 
 const articles = (await fetchApi<Article[]>({
     endpoint: 'articles',
@@ -31,7 +32,7 @@ const articles = (await fetchApi<Article[]>({
 
 							<li>
 								<a href={`/blog/${article.attributes.slug}/`}>
-                {article.attributes.image?.data.attributes.url && <Image width={720} height={360} src={article.attributes.image?.data.attributes.url} alt="" />}
+                {article.attributes.image?.data.attributes.url && <Picture width={800} decoding="async" inferSize src={article.attributes.image?.data.attributes.url} alt="" />}
 									<h4 class="title">{article.attributes.title}</h4>
 									<p class="date">
 										<FormattedDate date={new Date(article.attributes.publishedAt)} />
