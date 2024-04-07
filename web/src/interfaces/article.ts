@@ -9,5 +9,9 @@ export default interface Article {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
+    authors: {
+      name: string;
+      avatar: any;
+    }[];
   };
 }
