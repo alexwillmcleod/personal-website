@@ -27,7 +27,7 @@ const article = Astro.props;
 
 const coverImageURL: string | undefined = article.attributes.image?.data.attributes.url;
 ---
-<Layout title={article.attributes.title}>
+<Layout title={article.attributes.title} description={article.attributes.description}>
 
     <main class="w-full px-10 flex-col flex gap-8">
       <!-- <img src={import.meta.env.STRAPI_URL + article.attributes.image.data.attributes.url} /> -->
