@@ -34,7 +34,7 @@ console.log(`index = ${JSON.stringify(index)}`);
     </div>
     <div class="relative h-full w-full lg:mt-0 mt-24">
       <div class="absolute" style="z-index: 30; left: 0%; top: 32%">
-        <Image src={index.attributes.gallery[0].data.attributes.url} alt="" width={1200} height={1080} class="w-[50vw] rounded-xl object-cover shadow-lg">
+        <Image src={index.attributes.gallery.data[0].attributes.url} alt="" width={1200} height={1080} class="w-[50vw] rounded-xl object-cover shadow-lg">
       </div>
       <div class="absolute" style="z-index: 10; right: 0%; top: 5%">
         <Image src={index.attributes.gallery.data[1].attributes.url} alt="" width={1200} height={1080} class="w-[55vw] rounded-xl object-cover shadow-lg">
