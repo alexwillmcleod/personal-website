@@ -884,37 +884,31 @@ export interface ApiIndexIndex extends Schema.SingleType {
     };
   };
   attributes: {
-    MainPhoto: Attribute.Media &
+    gallery: Attribute.Media &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    SecondaryPhoto: Attribute.Media &
+    intro: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    TertiaryPhoto: Attribute.Media &
+    subintro: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    FinalGallery: Attribute.Media &
+    links: Attribute.Component<'link.link', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Intro: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    SubIntro: Attribute.RichText &
+    about: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

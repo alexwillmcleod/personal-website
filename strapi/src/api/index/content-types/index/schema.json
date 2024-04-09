@@ -16,46 +16,7 @@
     }
   },
   "attributes": {
-    "MainPhoto": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "SecondaryPhoto": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "TertiaryPhoto": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "FinalGallery": {
+    "gallery": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -68,7 +29,7 @@
         }
       }
     },
-    "Intro": {
+    "intro": {
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -76,13 +37,32 @@
       },
       "type": "richtext"
     },
-    "SubIntro": {
+    "subintro": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
       "type": "richtext"
+    },
+    "links": {
+      "displayName": "Link",
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "link.link"
+    },
+    "about": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text"
     }
   }
 }

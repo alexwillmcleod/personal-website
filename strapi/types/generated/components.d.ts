@@ -12,10 +12,23 @@ export interface AuthorAuthor extends Schema.Component {
   };
 }
 
+export interface LinkLink extends Schema.Component {
+  collectionName: 'components_link_links';
+  info: {
+    displayName: 'Link';
+    description: '';
+  };
+  attributes: {
+    value: Attribute.String;
+    href: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'author.author': AuthorAuthor;
+      'link.link': LinkLink;
     }
   }
 }
