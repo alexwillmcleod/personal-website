@@ -1,3 +1,7 @@
 .highlighted-code pre {
   padding: 10px !important;
 }
+article a {
+  text-decoration: underline;
+  color: rgb(59 130 246);
+}
