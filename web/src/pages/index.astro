@@ -6,21 +6,19 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import fetchApi from '../lib/strapi';
 import type Article from '../interfaces/article';
 import { Image, getImage } from 'astro:assets';
-import { parse } from 'marked';
+import { marked, parse } from 'marked';
 
 import TopographicImageSrc from '../../public/Topographic 3.svg';
 import Layout from '../layouts/layout.astro';
-import { Markdown } from '@astropub/md';
 const TopographicImage = await getImage({ src: TopographicImageSrc});
 
 
-
 const index = (await fetchApi<any>({
-  endpoint: 'index',
+  endpoint: 'index?populate=*',
   wrappedByKey: 'data'
 }))
-console.log(`index = ${JSON.stringify(index)}`);
-
+const introContent = index.attributes.intro && await marked.parse(index.attributes.intro);
+const subIntroContent = index.attributes.subIntro && await marked.parse(index.attributes.subIntro);
 
 ---
 
@@ -28,8 +26,8 @@ console.log(`index = ${JSON.stringify(index)}`);
   <div class="px-8 flex flex-col gap-4 h-[100vh] items-center w-full">
     <div class="relative w-full">
       <div class="absolute" style="z-index: 10; left: 0; top: 2rem;">
-        <div class="font-sans text-4xl"> <Markdown class="font-sans text-4xl" of={index.attributes.intro} /></div>
-        <div class="font-sans text-4xl font-italic opacity-60"> <Markdown class="font-sans text-4xl" of={index.attributes.subintro} /></div>
+        <div class="font-sans text-4xl"><p set:html={introContent} /></div>
+        <div class="font-sans text-4xl font-italic opacity-60"><p set:html={subIntroContent} /></div>
       </div>
     </div>
     <div class="relative h-full w-full lg:mt-0 mt-24">

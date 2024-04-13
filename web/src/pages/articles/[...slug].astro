@@ -2,14 +2,18 @@
 import Picture from 'astro/components/Picture.astro';
 import type Article from '../../interfaces/article';
 import fetchApi from '../../lib/strapi';
-import { Markdown } from '@astropub/md';
 import { Image, getImage } from 'astro:assets';
 import BaseHead from '../../components/BaseHead.astro';
 import Layout from '../../layouts/layout.astro';
+import Authors from '../../components/Authors.astro';
+import { marked } from 'marked';
+import  markedShiki  from 'marked-shiki';
+import { codeToHtml } from 'shiki';
+import './styles.css';
 
 export async function getStaticPaths() {
   const articles: Article[] = await fetchApi<Article[]>({
-    endpoint: 'articles',
+    endpoint: 'articles?populate=deep,3',
     wrappedByKey: 'data'
   });
 
@@ -24,22 +28,41 @@ export async function getStaticPaths() {
 type Props = Article;
 
 const article = Astro.props;
+const content = await marked.use(
+  markedShiki({
+    async highlight(code, lang) {
+      return await codeToHtml(code, { lang, theme: 'one-dark-pro' })
+    },
+    container: `<figure class="highlighted-code" style="position: relative; border-radius: 8px; overflow: hidden; width: fit-content;">
+%s
+</figure>
+`,
+  })).parse(article.attributes.content);
 
 const coverImageURL: string | undefined = article.attributes.image?.data.attributes.url;
 ---
 <Layout title={article.attributes.title} description={article.attributes.description}>
-
     <main class="w-full px-10 flex-col flex gap-8">
       <!-- <img src={import.meta.env.STRAPI_URL + article.attributes.image.data.attributes.url} /> -->
      
       {coverImageURL && <Picture width={1080} inferSize decoding="async" class="w-full rounded-xl object-cover h-96" src={coverImageURL} alt={article.attributes.title}/>}
+      
+      <div class="w-full flex-col gap-6">
       <div class="w-full flex flex-row justify-between">
+
         <h1 class="font-display font-black text-display text-3xl w-1/2">{article.attributes.title}</h1>
         <h3 class="font-display text-display text-xl">{new Date(article.attributes.publishedAt).toDateString()}</h3>
       </div>
+        <Authors authors={article.attributes?.authors.map((element) => ({
+                name: element.name,
+                profileIcon: element.avatar
+              }))}/>
+              </div>
       <!-- Render markdown -->
-      <div class="text-lg">
-        <Markdown of={article.attributes.content} />
+      <div class="text-lg rounded-md">
+        <div class="rounded-md">
+          <article set:html={content} class="flex flex-col gap-2"/>
+        </div>
       </div>
     </main>
 </Layout>

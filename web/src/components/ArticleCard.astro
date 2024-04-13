@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import FormattedDate from './FormattedDate.astro';
+import Authors from './Authors.astro';
 
 interface Props {
   title: string;
@@ -23,12 +24,12 @@ const {
   authors = []
 } = Astro.props;
 ---
-<a href={href} class="w-full p-4 flex flex-row gap-2 bg-white rounded-xl">
+<a href={href} class="w-full p-4 flex flex-row gap-4 bg-white rounded-xl">
   {src && <Picture class="w-80 rounded-xl" width={800} decoding="async" inferSize src={src} alt={title}/>}
-  <div class="w-full flex-col gap-2">
+  <div class="w-full flex-col flex gap-2">
     <p class="text-2xl text-primary font-display font-bold">{title}</p>
-    <p class="text-xl">{description?.slice(0, 180)}</p>
-    <p>{JSON.stringify(authors)}</p> 
+    <!-- <p class="text-xl">{description?.slice(0, 180)}</p> -->
+    <Authors authors={authors} />
     <p class="text-md"><FormattedDate date={date} /></p>
   </div>
 </a>

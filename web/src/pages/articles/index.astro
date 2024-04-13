@@ -12,7 +12,7 @@ import ArticleCard from '../../components/ArticleCard.astro';
 
 
 const articles = (await fetchApi<Article[]>({
-    endpoint: 'articles',
+    endpoint: 'articles?populate=deep,3',
     wrappedByKey: 'data'
   })).sort(
 	(a, b) => new Date(a.attributes.publishedAt).valueOf() - new Date(b.attributes.publishedAt).valueOf()
@@ -25,8 +25,8 @@ const articles = (await fetchApi<Article[]>({
     <ul>
       {
         articles.map((article: Article) => { 
-          console.log(`image = ${JSON.stringify(article.attributes.image.data.attributes.url)}`); 
           console.log(`authors = ${JSON.stringify(article.attributes.authors)}`); 
+          console.log(`everything = ${JSON.stringify(article.attributes)}`); 
           return (
             <li>
               <ArticleCard authors={article.attributes?.authors.map((element) => ({
