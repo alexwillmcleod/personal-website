@@ -1,5 +1,11 @@
 .highlighted-code pre {
-  padding: 10px !important;
+  display: block;
+  width: fit-content;
+  border-radius: 8px;
+  max-width: 100%;
+  padding: 10px;
+  margin: 0;
+  overflow-x: auto;
 }
 article a {
   text-decoration: underline;

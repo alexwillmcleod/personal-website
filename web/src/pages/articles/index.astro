@@ -25,8 +25,6 @@ const articles = (await fetchApi<Article[]>({
     <ul>
       {
         articles.map((article: Article) => { 
-          console.log(`authors = ${JSON.stringify(article.attributes.authors)}`); 
-          console.log(`everything = ${JSON.stringify(article.attributes)}`); 
           return (
             <li>
               <ArticleCard authors={article.attributes?.authors.map((element) => ({

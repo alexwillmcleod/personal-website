@@ -24,8 +24,8 @@ const {
   authors = []
 } = Astro.props;
 ---
-<a href={href} class="w-full p-4 flex flex-row gap-4 bg-white rounded-xl">
-  {src && <Picture class="w-80 rounded-xl" width={800} decoding="async" inferSize src={src} alt={title}/>}
+<a href={href} class="w-full p-4 flex flex-col md:flex-row gap-4 bg-white rounded-xl">
+  {src && <Picture class="w-full h-32 md:h-full object-cover object-center md:w-80 rounded-xl" width={800} decoding="async" inferSize src={src} alt={title}/>}
   <div class="w-full flex-col flex gap-2">
     <p class="text-2xl text-primary font-display font-bold">{title}</p>
     <!-- <p class="text-xl">{description?.slice(0, 180)}</p> -->
