@@ -695,6 +695,11 @@
   resolved "https://registry.yarnpkg.com/@shikijs/core/-/core-1.3.0.tgz#5b93b51ddb8def1e3a1543107f9b5b0540f716f6"
   integrity sha512-7fedsBfuILDTBmrYZNFI8B6ATTxhQAasUHllHmjvSZPnoq4bULWoTpHwmuQvZ8Aq03/tAa2IGo6RXqWtHdWaCA==
 
+"@typehaus/metropolis@^12.0.0-next.7":
+  version "12.0.0-next.7"
+  resolved "https://registry.yarnpkg.com/@typehaus/metropolis/-/metropolis-12.0.0-next.7.tgz#b76b5c0090fe957006b671732af8ed7a05a027fa"
+  integrity sha512-YpJwXiyKQy0j+3LZ1SM2VaO/W3V4aGlzTCkLOBu3dpdXtOMEYVmzMvhK1hsMyernjYp7xq9QnCbd+K+E/kMfgw==
+
 "@types/acorn@^4.0.0":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@types/acorn/-/acorn-4.0.6.tgz#d61ca5480300ac41a7d973dd5b84d0a591154a22"

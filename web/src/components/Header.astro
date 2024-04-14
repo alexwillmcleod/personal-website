@@ -12,7 +12,7 @@ const HomeIcon = await getImage({ src: HomeIconSrc});
     <div>
       <a href="/"><Image src={HomeIcon.src} width={30} height={30} alt="Home" /></a>
     </div>
-    <div class="flex md:hidden" onclick="document.getElementById('hamburg-options').showModal()"><img width={40} src="hamburg.svg" /></div>
+    <div class="flex md:hidden" onclick="document.getElementById('hamburg-options').showModal()"><img width={40} src="/hamburg.svg" /></div>
     <dialog class="rounded-xl absolute w-screen h-full p-4 bg-white/50 backdrop-blur-lg shadow-sm" id="hamburg-options">
        <div class="flex flex-col justify-center items-center w-full h-full" onclick="document.getElementById('hamburg-options').close()">
         <div class=" p-8 flex flex-col justify-center items-center gap-8 text-3xl">
