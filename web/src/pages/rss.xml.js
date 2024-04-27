@@ -17,7 +17,7 @@ export async function GET(context) {
       title: article.attributes.title || '',
       description: article.attributes.description || '',
       pubDate: new Date(article.attributes.publishedAt),
-      link: `/blog/${article.attributes.slug}/`,
+      link: `/articles/${article.attributes.slug}/`,
     })),
   });
 }
