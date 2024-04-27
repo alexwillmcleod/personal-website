@@ -1,11 +1,23 @@
-.highlighted-code pre {
+.highlighted-code > pre {
   display: block;
   width: fit-content;
   border-radius: 8px;
   max-width: 100%;
-  padding: 10px;
+  padding: 10px 20px;
   margin: 0;
   overflow-x: auto;
+}
+
+.highlighted-code {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 1rem 0rem;
+  width: 100%;
+}
+article img {
+  border-radius: 8px;
 }
 article a {
   text-decoration: underline;
