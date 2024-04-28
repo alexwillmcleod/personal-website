@@ -32,7 +32,7 @@ const subIntroContent = index.attributes.subIntro && await marked.parse(index.at
         <div class="font-sans text-4xl font-italic opacity-60"><p set:html={subIntroContent} /></div>
       </div>
     </div>
-    <div class="relative h-[18rem] sm:h-[28rem] md:h-[34rem] lg:h-[40rem] xl:h-[50rem] w-full mt-24 md:mt-0 p-10 ">
+    <div class="relative h-[18rem] sm:h-[28rem] md:h-[34rem] lg:h-[48rem] xl:h-[60rem] w-full mt-24 md:mt-0 p-10 ">
       <div class="absolute z-10 sm:z-30 left-0 top-[20%] md:top-[32%]" >
         <Image src={index.attributes.gallery.data[0].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="w-[50vw] rounded-xl object-cover shadow-lg">
       </div>
@@ -46,7 +46,7 @@ const subIntroContent = index.attributes.subIntro && await marked.parse(index.at
     </div>
   </div>
   <div class="flex flex-col md:flex-row gap-12 md:gap-4 px-8 pt-12 pb-6 justify-around">
-    <p class="text-xl md:text-3xl w-full md:w-1/2">{index.attributes.about}</p>
+    <p class="text-3xl w-full md:w-1/2">{index.attributes.about}</p>
     <div class="flex flex-col gap-2 text-2xl items-left">
       {index.attributes.links.map(({value, href}: {value: string, href: string}) => (
         <>
