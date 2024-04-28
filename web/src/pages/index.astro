@@ -23,6 +23,8 @@ const subIntroContent = index.attributes.subIntro && await marked.parse(index.at
 ---
 
 <Layout title='Alex McLeod' description="Alex McLeod's Personal Website">
+  <div class="flex w-full justify-center">
+  <div class="max-w-screen-2xl">
   <div class="px-8 flex flex-col gap-4 h-[54vh] sm:h-[54vh] md:h-[70vh] lg:h-screen items-center w-full">
     <div class="relative w-full">
       <div class="absolute" style="z-index: 10; left: 0; top: 2rem;">
@@ -43,7 +45,7 @@ const subIntroContent = index.attributes.subIntro && await marked.parse(index.at
       <!-- Add as many photos as you want following the same pattern -->
     </div>
   </div>
-  <div class="flex flex-col md:flex-row gap-12 md:gap-4 px-8 md:py-36 lg:py-12 pb-18 sm:pt-40 justify-around">
+  <div class="flex flex-col md:flex-row gap-12 md:gap-4 px-8 md:py-36 lg:pt-48 lg:pb-6 pb-18 sm:pt-40 justify-around">
     <p class="text-xl md:text-3xl w-full md:w-1/2">{index.attributes.about}</p>
     <div class="flex flex-col gap-2 text-2xl items-left">
       {index.attributes.links.map(({value, href}: {value: string, href: string}) => (
@@ -70,5 +72,7 @@ const subIntroContent = index.attributes.subIntro && await marked.parse(index.at
       </div>
       <!-- Add as many photos as you want following the same pattern -->
     </div>
+  </div>
+  </div>
   </div>
 </Layout>
