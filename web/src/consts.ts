@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = "Xander McLeod's Website";
 export const SITE_DESCRIPTION =
-  'Final Year Computer Science Student at Waipapa Taumata Rau the University of Auckland';
+  'Xander McLeod is a final year computer science student at Waipapa Taumata Rau the University of Auckland';
