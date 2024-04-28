@@ -41,10 +41,9 @@ const content = await marked.use(
 
 const coverImageURL: string | undefined = article.attributes.image?.data.attributes.url;
 ---
-<Layout title={article.attributes.title} description={article.attributes.description}>
+<Layout title={article.attributes.title} description={article.attributes.description} image={article.attributes.image?.data.attributes.url}>
     <main class="w-full flex flex-col items-center overflow-x-hidden">
       <div class="w-full md:max-w-screen-md px-10 flex-col flex gap-8">
-      <!-- <img src={import.meta.env.STRAPI_URL + article.attributes.image.data.attributes.url} /> -->
      
       {coverImageURL && <Picture width={1080} inferSize decoding="async" class="h-48 md:h-96 w-full rounded-xl object-cover" src={coverImageURL} alt={article.attributes.title}/>}
       
