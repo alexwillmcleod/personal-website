@@ -24,55 +24,56 @@ const subIntroContent = index.attributes.subIntro && await marked.parse(index.at
 
 <Layout>
   <div class="flex w-full justify-center">
-  <div class="max-w-screen-2xl">
-  <div class="px-8 flex flex-col gap-4 items-center w-full">
-    <div class="relative w-full">
-      <div class="absolute" style="z-index: 10; left: 0; top: 2rem;">
-        <div class="font-sans text-4xl"><p set:html={introContent} /></div>
-        <div class="font-sans text-4xl font-italic opacity-60"><p set:html={subIntroContent} /></div>
+  <div class="max-w-screen-xl">
+    <div class="px-8 flex flex-col gap-4 items-center justify-center w-full">
+      <div class="relative w-full">
+        <div class="absolute" style="z-index: 10; left: 0; top: 2rem;">
+          <div class="font-sans text-4xl"><p set:html={introContent} /></div>
+          <div class="font-sans text-4xl font-italic opacity-60"><p set:html={subIntroContent} /></div>
+        </div>
+      </div>
+      <div class="relative h-[40rem] w-full mt-10 p-10 ">
+        <div class="absolute z-10 top-1/2 left-1/2 transform -translate-y-[3rem] -translate-x-[25rem]" >
+          <Image src={index.attributes.gallery.data[0].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+        </div>
+        <div class="absolute z-30 top-1/2 left-1/2" >
+          <Image src={index.attributes.gallery.data[1].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+        </div>
+        <div class="absolute z-20 top-0 left-1/2 transform -translate-x-[6rem]  translate-y-[5rem]" >
+          <Image src={index.attributes.gallery.data[2].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+        </div>
+        <!-- Add as many photos as you want following the same pattern -->
       </div>
     </div>
-    <div class="relative h-[15rem] sm:h-[30rem] md:h-[34rem] lg:h-[48rem] xl:h-[56rem] w-full mt-32 md:mt-0 p-10 ">
-      <div class="absolute z-10 sm:z-30 left-0 top-[20%] md:top-[32%]" >
-        <Image src={index.attributes.gallery.data[0].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="w-[50vw] rounded-xl object-cover shadow-lg">
+    <div class="flex flex-col md:flex-row gap-12 md:gap-4 px-8 pt-12 pb-6 justify-around">
+      <p class="text-2xl md:text-3xl w-full md:w-1/2">{index.attributes.about}</p>
+      <div class="flex flex-col gap-2 text-2xl items-left">
+        {index.attributes.links.map(({value, href}: {value: string, href: string}) => (
+          <>
+            <a href={href} class="flex flex-row gap-4">{value}<img class="w-4" src="/Arrow 1.svg"></a>
+            <hr class="text-black/60 border-2" />
+          </>
+        ))} 
+            </div>
+    </div>
+    <div class="relative h-[45rem] w-full mt-10 p-10 ">
+      <!-- Maungakiekie -->
+      <div class="absolute z-30 top-1/2 left-1/2 transform translate-y-[3rem] -translate-x-[28rem]" >
+        <Image src={index.attributes.gallery.data[3].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
       </div>
-      <div class="absolute z-30 sm:z-20 left-[45%] md:left-[50%] top-[34%] sm:top-[50%]" >
-        <Image src={index.attributes.gallery.data[1].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="w-[40vw] rounded-xl object-cover shadow-lg">
+      <!-- Pukekawa -->
+      <div class="absolute z-20 top-1/2 left-1/2" >
+        <Image src={index.attributes.gallery.data[4].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
       </div>
-      <div class="absolute z-20 sm:z-10 left-[50%] top-[5%]" >
-        <Image src={index.attributes.gallery.data[2].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="w-[55vw] rounded-xl object-cover shadow-lg">
+      <!-- Waitemetā Station -->
+      <div class="absolute z-10 top-0 left-1/2 transform -translate-x-[3rem]  translate-y-[3rem]" >
+        <Image src={index.attributes.gallery.data[5].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+      </div>
+      <!-- Ferry -->
+      <div class="absolute z-40 top-0 left-1/2 transform -translate-x-[25rem] translate-y-[8rem]" >
+        <Image src={index.attributes.gallery.data[6].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
       </div>
       <!-- Add as many photos as you want following the same pattern -->
     </div>
-  </div>
-  <div class="flex flex-col md:flex-row gap-12 md:gap-4 px-8 pt-12 pb-6 justify-around">
-    <p class="text-2xl md:text-3xl w-full md:w-1/2">{index.attributes.about}</p>
-    <div class="flex flex-col gap-2 text-2xl items-left">
-      {index.attributes.links.map(({value, href}: {value: string, href: string}) => (
-        <>
-          <a href={href} class="flex flex-row gap-4">{value}<img class="w-4" src="/Arrow 1.svg"></a>
-          <hr class="text-black/60 border-2" />
-        </>
-      ))} 
-          </div>
-  </div>
-  <div class="px-8 flex flex-col gap-4 h-[35vh] sm:h-[55vh] md:h-[70vh] lg:h-screen items-center w-full">
-    <div class="relative h-full w-full lg:mt-16 mt-8">
-      <div class="absolute" style="z-index: 30; left: 0%; top: 32%">
-        <Image src={index.attributes.gallery.data[3].attributes.url} alt="" width={1200} height={1080} class="w-[30vw] rounded-xl object-cover shadow-lg">
-      </div>
-      <div class="absolute" style="z-index: 10; right: 0%; top: 5%">
-        <Image src={index.attributes.gallery.data[4].attributes.url} alt="" width={1200} height={1080} class="w-[50vw] rounded-xl object-cover shadow-lg">
-      </div>
-      <div class="absolute" style="z-index: 20; right: 20%; bottom: 15%">
-        <Image src={index.attributes.gallery.data[5].attributes.url} alt="" width={1200} height={1080} class="w-[40vw] rounded-xl object-cover shadow-lg">
-      </div>
-      <div class="absolute" style="z-index: 40; left: 15%; top: 10%">
-        <Image src={index.attributes.gallery.data[6].attributes.url} alt="" width={1200} height={1080} class="w-[40vw] rounded-xl object-cover shadow-lg">
-      </div>
-      <!-- Add as many photos as you want following the same pattern -->
-    </div>
-  </div>
-  </div>
   </div>
 </Layout>
