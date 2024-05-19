@@ -25,23 +25,26 @@ const subIntroContent = index.attributes.subIntro && await marked.parse(index.at
 <Layout>
   <div class="flex w-full justify-center">
   <div class="max-w-screen-xl">
-    <div class="px-8 flex flex-col gap-4 items-center justify-center w-full">
-      <div class="relative w-full">
-        <div class="absolute" style="z-index: 10; left: 0; top: 2rem;">
-          <div class="font-sans text-4xl"><p set:html={introContent} /></div>
-          <div class="font-sans text-4xl font-italic opacity-60"><p set:html={subIntroContent} /></div>
-        </div>
+    <div class="px-8 flex flex-col items-center justify-center w-full">
+      <div class="lg:absolute lg:top-28 lg:left-28 sm:flex flex-col w-full">
+        <div class="font-sans text-4xl"><p set:html={introContent} /></div>
+        <div class="font-sans text-4xl font-italic opacity-60"><p set:html={subIntroContent} /></div>
       </div>
-      <div class="relative h-[40rem] w-full mt-10 p-10 ">
-        <div class="absolute z-10 top-1/2 left-1/2 transform -translate-y-[3rem] -translate-x-[25rem]" >
-          <Image src={index.attributes.gallery.data[0].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+      <div class="grid grid-cols-2 grid-rows-2 h-fit w-full ">
+        <!-- Devonport -->
+        <div class="z-10 col-start-1 row-start-2 col-span-1 row-span-1 transform translate-x-[10%]" >
+          <Image src={index.attributes.gallery.data[0].attributes.url} alt="Gallery Photo" width={1200} height={1080} class=" rounded-xl object-cover shadow-lg">
         </div>
-        <div class="absolute z-30 top-1/2 left-1/2" >
-          <Image src={index.attributes.gallery.data[1].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+        <!-- Wynyard Quarter -->
+        <div class="z-30 col-start-2 row-start-2 col-span-1 row-span-1" >
+          <Image src={index.attributes.gallery.data[1].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="rounded-xl object-cover shadow-lg">
         </div>
-        <div class="absolute z-20 top-0 left-1/2 transform -translate-x-[6rem]  translate-y-[5rem]" >
-          <Image src={index.attributes.gallery.data[2].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+        <!-- Waipārūrū -->
+        <div class="z-20 col-start-2 row-start-1 col-span-1 row-span-1 transform -translate-x-[10%]  translate-y-[20%]" >
+          <Image src={index.attributes.gallery.data[2].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="rounded-xl object-cover shadow-lg">
         </div>
+
+
         <!-- Add as many photos as you want following the same pattern -->
       </div>
     </div>
@@ -56,22 +59,22 @@ const subIntroContent = index.attributes.subIntro && await marked.parse(index.at
         ))} 
             </div>
     </div>
-    <div class="relative h-[45rem] w-full mt-10 p-10 ">
+    <div class="grid grid-cols-2 grid-rows-2 h-fit w-full">
       <!-- Maungakiekie -->
-      <div class="absolute z-30 top-1/2 left-1/2 transform translate-y-[3rem] -translate-x-[28rem]" >
-        <Image src={index.attributes.gallery.data[3].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+      <div class="col-start-1 row-start-2 transform translate-x-[20%] translate-y-[10%]" >
+        <Image src={index.attributes.gallery.data[3].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-1/2 min-w-0 w-fit rounded-xl object-cover shadow-lg">
       </div>
       <!-- Pukekawa -->
-      <div class="absolute z-20 top-1/2 left-1/2" >
-        <Image src={index.attributes.gallery.data[4].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+      <div class="col-start-2 row-start-2 transform -translate-y-[15%] -translate-x-[10%]" >
+        <Image src={index.attributes.gallery.data[4].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-1/2 min-w-0 w-fit rounded-xl object-cover shadow-lg">
       </div>
       <!-- Waitemetā Station -->
-      <div class="absolute z-10 top-0 left-1/2 transform -translate-x-[3rem]  translate-y-[3rem]" >
-        <Image src={index.attributes.gallery.data[5].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+      <div class="col-start-2 row-start-1 transform translate-y-[10%]" >
+        <Image src={index.attributes.gallery.data[5].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[80%] min-w-0 w-fit rounded-xl object-cover shadow-lg">
       </div>
       <!-- Ferry -->
-      <div class="absolute z-40 top-0 left-1/2 transform -translate-x-[25rem] translate-y-[8rem]" >
-        <Image src={index.attributes.gallery.data[6].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-[30rem] rounded-xl object-cover shadow-lg">
+      <div class="col-start-1 row-start-1 transform translate-x-[10%]  translate-y-[40%]" >
+        <Image src={index.attributes.gallery.data[6].attributes.url} alt="Gallery Photo" width={1200} height={1080} class="max-w-1/2 min-w-0 w-fit rounded-xl object-cover shadow-lg">
       </div>
       <!-- Add as many photos as you want following the same pattern -->
     </div>
