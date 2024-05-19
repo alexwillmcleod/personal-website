@@ -20,21 +20,23 @@ const articles = (await fetchApi<Article[]>({
 ---
 
 <Layout title="Xander McLeod's Articles">
-  <main class="px-10 flex flex-col gap-4 justify-center">
-    <h1 class="text-primary font-display font-bold text-3xl">Articles</h1>
-    <ul>
-      {
-        articles.map((article: Article) => { 
-          return (
-            <li>
-              <ArticleCard authors={article.attributes?.authors.map((element) => ({
-                name: element.name,
-                profileIcon: element.avatar
-              }))} description={article.attributes.description} title={article.attributes.title} src={article.attributes.image?.data?.attributes?.url} date={new Date(article.attributes.publishedAt)} href={`/articles/${article.attributes.slug}/`}/>
-            </li>
-        );
-      })
-      }
-    </ul>
+  <main class="flex flex-col justify-center items-center">
+    <div class="px-10 flex flex-col gap-4 justify-center max-w-screen-xl">
+      <h1 class="text-primary font-display font-bold text-3xl">Articles</h1>
+      <ul>
+        {
+          articles.map((article: Article) => { 
+            return (
+              <li>
+                <ArticleCard authors={article.attributes?.authors.map((element) => ({
+                  name: element.name,
+                  profileIcon: element.avatar
+                }))} description={article.attributes.description} title={article.attributes.title} src={article.attributes.image?.data?.attributes?.url} date={new Date(article.attributes.publishedAt)} href={`/articles/${article.attributes.slug}/`}/>
+              </li>
+          );
+        })
+        }
+      </ul>
+    </div>
   </main>
 </Layout>
