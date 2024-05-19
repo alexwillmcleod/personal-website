@@ -24,10 +24,10 @@ const subIntroContent = index.attributes.subIntro && await marked.parse(index.at
 
 <Layout>
   <div class="flex w-full justify-center">
-  <div class="max-w-screen-xl">
+  <div class="max-w-screen-lg">
     <div class="relative px-8 flex flex-col items-center justify-center w-full">
-      <div class="lg:absolute lg:top-28 lg:left-28 sm:flex flex-col w-full">
-        <div class="text-4xl text-primary font-bold font-display"><p set:html={introContent} /></div>
+      <div class="lg:absolute lg:top-14 lg:left-28 sm:flex flex-col w-full">
+        <div class="text-4xl text-primary font-sans"><p set:html={introContent} /></div>
         <div class="font-sans text-4xl text-primary font-italic opacity-60"><p set:html={subIntroContent} /></div>
       </div>
       <div class="grid grid-cols-2 grid-rows-2 h-fit w-full ">
