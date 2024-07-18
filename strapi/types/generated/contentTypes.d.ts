@@ -801,10 +801,10 @@ export interface ApiAboutAbout extends Schema.SingleType {
   };
   attributes: {
     title: Attribute.String;
-    summary: Attribute.Blocks;
-    pepeha: Attribute.Blocks;
     photo: Attribute.Media;
     duration: Attribute.Component<'duration.duration'>;
+    summary: Attribute.RichText;
+    pepeha: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

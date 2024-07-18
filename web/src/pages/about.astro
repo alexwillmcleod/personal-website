@@ -1,0 +1,90 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import fetchApi from '../lib/strapi';
+import type Article from '../interfaces/article';
+import type Experience from '../interfaces/experience';
+import { Image, getImage } from 'astro:assets';
+import { marked, parse } from 'marked';
+
+import TopographicImageSrc from '../../public/Topographic 3.svg';
+import Layout from '../layouts/layout.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
+const TopographicImage = await getImage({ src: TopographicImageSrc});
+
+const about = (await fetchApi<any>({
+  endpoint: 'about?populate=*',
+  wrappedByKey: 'data'
+}))
+
+const titleContent = about.attributes.title && await marked.parse(about.attributes.title);
+const summaryContent = about.attributes.summary && await marked.parse(about.attributes.summary);
+const pepehaContent = about.attributes.pepeha && await marked.parse(about.attributes.pepeha);
+const personalPhoto = about.attributes.photo;
+
+const experiences = (await fetchApi<Experience[]>({
+    endpoint: 'experiences?populate=deep,4',
+    wrappedByKey: 'data'
+  })).sort(
+	(a, b) => new Date(a.attributes.publishedAt).valueOf() - new Date(b.attributes.publishedAt).valueOf()
+)
+console.log(experiences);
+console.log(experiences[0].attributes.organisation.logo);
+
+---
+
+<Layout>
+  <div class="flex w-full justify-center">
+    <div class="flex flex-col gap-16 w-full max-w-screen-lg p-8">
+      <div class="flex flex-row justify-start">
+        <h1 class="font-bold text-4xl font-display"set:html={titleContent}/>
+      </div>
+      <div class="flex flex-col lg:flex-row items-left gap-8 lg:justify-left">
+        <div class="max-w-[400px] text-2xl" set:html={summaryContent}></div>
+        <div class="w-full flex justify-center">
+          <img class="w-full max-w-[500px]  rounded-md" src={about.attributes.photo.data.attributes.url} />
+        </div>
+      </div>
+      <div>
+        <div class="flex flex-col gap-4 justify-start">
+          <h3 class="font-bold text-3xl font-display">Pepeha</h3>
+          <div class="max-w-[800px] text-2xl" set:html={pepehaContent}></div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-16">
+        <div class="flex flex-col gap-4 justify-start">
+          <h3 class="font-bold text-3xl font-display">Professional Experience</h3>
+          <ul class="flex flex-col gap-6">
+            {experiences.filter((element: any) => element.attributes.type == 'Professional').map((element: any) => (
+              <li>
+                <ExperienceCard experience={element}/>
+              </li>
+            ))} 
+          </ul>
+        </div>
+        <div class="flex flex-col gap-4 justify-start">
+          <h3 class="font-bold text-3xl font-display">Education</h3>
+          <ul class="flex flex-col gap-6">
+            {experiences.filter((element: any) => element.attributes.type == 'Education').map((element: any) => (
+              <li>
+                <ExperienceCard experience={element}/>
+              </li>
+            ))} 
+          </ul>
+        </div>
+        <div class="flex flex-col gap-4 justify-start">
+          <h3 class="font-bold text-3xl font-display">Volunteering</h3>
+          <ul class="flex flex-col gap-6">
+            {experiences.filter((element: any) => element.attributes.type == 'Volunteering').map((element: any) => (
+              <li>
+                <ExperienceCard experience={element}/>
+              </li>
+            ))} 
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

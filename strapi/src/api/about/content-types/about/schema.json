@@ -15,26 +15,27 @@
     "title": {
       "type": "string"
     },
-    "summary": {
-      "type": "blocks"
-    },
-    "pepeha": {
-      "type": "blocks"
-    },
     "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "duration": {
       "type": "component",
       "repeatable": false,
       "component": "duration.duration"
+    },
+    "summary": {
+      "type": "richtext"
+    },
+    "pepeha": {
+      "type": "richtext"
     }
   }
 }

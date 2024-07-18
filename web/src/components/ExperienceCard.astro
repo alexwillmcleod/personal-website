@@ -1,0 +1,51 @@
+---
+import type Experience from "../interfaces/experience";
+
+const monthToString = (monthNumber: number | undefined) => {
+  switch (monthNumber) {
+    case 0: return 'January';
+    case 1: return 'February';
+    case 2: return 'March';
+    case 3: return 'April';
+    case 4: return 'May';
+    case 5: return 'June';
+    case 6: return 'July';
+    case 7: return 'August';
+    case 8: return 'September';
+    case 9: return 'October';
+    case 10: return 'November';
+    case 11: return 'December';
+    default: return 'Present'
+  }
+}
+
+const {
+  experience
+}: { experience: Experience } = Astro.props as { experience: Experience };
+console.log(JSON.stringify(experience.attributes.duration));
+const endMonth = monthToString(experience.attributes.duration.end ? new Date(experience.attributes.duration.end).getMonth() : undefined);
+const endYear = experience.attributes.duration.end ? new Date(experience.attributes.duration.end).getFullYear() : '';
+const startMonth = monthToString(new Date(experience.attributes.duration.start).getMonth());
+const startYear = new Date(experience.attributes.duration.start).getFullYear();
+---
+<a class={`flex flex-col gap-1 bg-slate-200/40 drop-shadow-md shadow-xl rounded-xl p-6 ${experience.attributes.article ? 'cursor-pointer' : ''}`} href={experience.attributes.article ? `/experience/${experience.id}` : undefined}>
+  <p class="text-2xl font-bold">{experience.attributes.role}</p>
+  <div class="flex sm:flex-row flex-col gap-2 sm:items-center">
+    <p class="text-lg">{experience.attributes.location}</p>
+    <p class="lg:visible hidden">|</p>
+    <p class="sm:visible hidden italic text-lg">{experience.attributes.location_type}</p>
+  </div>
+  <div class="flex flex-col sm:flex-row gap-2 sm:items-center">
+    <p class="text-lg">{startMonth} {startYear} - {endMonth} {endYear}</p>
+    <p class="sm:visible hidden">|</p>
+    <p class="sm:visible hidden italic text-lg">{experience.attributes.work_type}</p>
+  </div>
+  <div class="flex flex-row gap-2 items-center">
+    <img class="rounded-md w-8 h-8" src={experience.attributes.organisation.logo.data.attributes.url} />
+    <p>{experience.attributes.organisation.name}</p>
+  </div>
+</a>
+
+
+
+
