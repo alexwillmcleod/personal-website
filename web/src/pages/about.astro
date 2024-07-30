@@ -30,16 +30,14 @@ const experiences = (await fetchApi<Experience[]>({
   })).sort(
 	(a, b) => new Date(a.attributes.publishedAt).valueOf() - new Date(b.attributes.publishedAt).valueOf()
 )
-console.log(experiences);
-console.log(experiences[0].attributes.organisation.logo);
 
 ---
 
 <Layout>
   <div class="flex w-full justify-center">
-    <div class="flex flex-col gap-16 w-full max-w-screen-lg p-8">
+    <div class="flex flex-col gap-12 w-full max-w-screen-lg p-8">
       <div class="flex flex-row justify-start">
-        <h1 class="font-bold text-4xl font-display"set:html={titleContent}/>
+        <h1 class="text-primary font-bold text-3xl font-display"set:html={titleContent}/>
       </div>
       <div class="flex flex-col lg:flex-row items-left gap-8 lg:justify-left">
         <div class="max-w-[400px] text-2xl" set:html={summaryContent}></div>
@@ -49,13 +47,13 @@ console.log(experiences[0].attributes.organisation.logo);
       </div>
       <div>
         <div class="flex flex-col gap-4 justify-start">
-          <h3 class="font-bold text-3xl font-display">Pepeha</h3>
-          <div class="max-w-[800px] text-2xl" set:html={pepehaContent}></div>
+          <h3 class="font-bold text-xl font-display">Pepeha</h3>
+          <div class="max-w-[800px] text-xl" set:html={pepehaContent}></div>
         </div>
       </div>
       <div class="flex flex-col gap-16">
         <div class="flex flex-col gap-4 justify-start">
-          <h3 class="font-bold text-3xl font-display">Professional Experience</h3>
+          <h3 class="font-bold text-xl font-display">Professional Experience</h3>
           <ul class="flex flex-col gap-6">
             {experiences.filter((element: any) => element.attributes.type == 'Professional').map((element: any) => (
               <li>
@@ -65,7 +63,7 @@ console.log(experiences[0].attributes.organisation.logo);
           </ul>
         </div>
         <div class="flex flex-col gap-4 justify-start">
-          <h3 class="font-bold text-3xl font-display">Education</h3>
+          <h3 class="font-bold text-xl font-display">Education</h3>
           <ul class="flex flex-col gap-6">
             {experiences.filter((element: any) => element.attributes.type == 'Education').map((element: any) => (
               <li>
@@ -75,9 +73,19 @@ console.log(experiences[0].attributes.organisation.logo);
           </ul>
         </div>
         <div class="flex flex-col gap-4 justify-start">
-          <h3 class="font-bold text-3xl font-display">Volunteering</h3>
+          <h3 class="font-bold text-xl font-display">Volunteering</h3>
           <ul class="flex flex-col gap-6">
             {experiences.filter((element: any) => element.attributes.type == 'Volunteering').map((element: any) => (
+              <li>
+                <ExperienceCard experience={element}/>
+              </li>
+            ))} 
+          </ul>
+        </div>
+        <div class="flex flex-col gap-4 justify-start">
+          <h3 class="font-bold text-xl font-display">Programmes</h3>
+          <ul class="flex flex-col gap-6">
+            {experiences.filter((element: any) => element.attributes.type == 'Programmes').map((element: any) => (
               <li>
                 <ExperienceCard experience={element}/>
               </li>

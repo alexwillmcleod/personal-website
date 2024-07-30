@@ -29,7 +29,7 @@ const startMonth = monthToString(new Date(experience.attributes.duration.start).
 const startYear = new Date(experience.attributes.duration.start).getFullYear();
 ---
 <a class={`flex flex-col gap-1 bg-slate-200/40 drop-shadow-md shadow-xl rounded-xl p-6 ${experience.attributes.article ? 'cursor-pointer' : ''}`} href={experience.attributes.article ? `/experience/${experience.id}` : undefined}>
-  <p class="text-2xl font-bold">{experience.attributes.role}</p>
+  <p class="text-lg font-semibold">{experience.attributes.role}</p>
   <div class="flex sm:flex-row flex-col gap-2 sm:items-center">
     <p class="text-lg">{experience.attributes.location}</p>
     <p class="lg:visible hidden">|</p>
@@ -41,7 +41,7 @@ const startYear = new Date(experience.attributes.duration.start).getFullYear();
     <p class="sm:visible hidden italic text-lg">{experience.attributes.work_type}</p>
   </div>
   <div class="flex flex-row gap-2 items-center">
-    <img class="rounded-md w-8 h-8" src={experience.attributes.organisation.logo.data.attributes.url} />
+    <img class="rounded-md h-8" src={experience.attributes.organisation.logo.data.attributes.url} />
     <p>{experience.attributes.organisation.name}</p>
   </div>
 </a>
