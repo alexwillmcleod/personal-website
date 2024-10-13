@@ -3,8 +3,7 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 import { Image, getImage } from 'astro:assets';
 
-import HomeIconSrc from '../../public/Vector.svg';
-const HomeIcon = await getImage({ src: HomeIconSrc});
+const HomeIconSrc = '../../public/Vector.svg';
 ---
 
 <script defer>
@@ -25,7 +24,7 @@ const HomeIcon = await getImage({ src: HomeIconSrc});
 <header class="z-50 relative">
   <nav class="flex flex-row justify-between p-10 bg-transparent sticky items-center">
     <div>
-      <a href="/"><Image src={HomeIconSrc} width={30} height={30} alt="Home" /></a>
+      <a href="/"><img src={HomeIconSrc} width={30} height={30} alt="Home" /></a>
     </div>
     <div class="flex md:hidden" onclick="openMenu()"><img width={40} src="/hamburg.svg" /></div>
     <div style={{
