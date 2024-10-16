@@ -15,7 +15,7 @@ const articles = (await fetchApi<Article[]>({
     endpoint: 'articles?populate=deep,3',
     wrappedByKey: 'data'
   })).sort(
-	(a, b) => new Date(a.attributes.publishedAt).valueOf() - new Date(b.attributes.publishedAt).valueOf()
+	(a, b) => new Date(b.attributes.publishedAt).valueOf() - new Date(a.attributes.publishedAt).valueOf()
 )
 ---
 
